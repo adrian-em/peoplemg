@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+	{% block title %} Intervenciones {{ user.username }}{% endblock %}
+	{% block head %}Intervenciones{% endblock %}
+	{% block content %}
+	{% if user.username %}
+		<table border="0" cellpadding="12" cellspacing="10" class="table">
+		<thead>
+		<tr>
+			<th>Fecha Inicio</th>
+			<th>Fecha Fin</th>
+			<th>Observaciones</th>
+			<th>N1</th>
+			<th>N2</th>
+		</tr>
+		</thead>
+		<form action="." method="post">
+			{% csrf_token %}
+				<td class="ocultar">{{form.fini}}</td>
+				<td class="ocultar">{{form.ffin}}</td>
+				<td class="ocultar">{{form.obs}}</td>
+		<input type="submit"  class="btn" value="Añadir intervencion" id="add"/>
+		<a href="#" id="mostrar" class="btn">Añadir</a>
+		</form>
+		{% for intervencion in intervenciones %}
+		<tr>
+			<td>{{ intervencion.fini }}</td>
+			<td>{{ intervencion.ffin }}</td>
+			<td>{{ intervencion.observaciones }}</td>
+			<td class="n1">{{ intervencion.v_n1}}</td>
+			<td class="n2">{{ intervencion.v_n2}}</td>
+		</tr>
+		{% endfor %}
+		</table>
+	{% else %}
+		<p>Esto es una página restringida, debes loguearte para acceder.<br />
+		<a href="/">login</a>
+		</p>
+{% endif %}
+{% endblock %}

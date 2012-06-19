@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+	{% block title %} Jornadas {{ user.username }}{% endblock %}
+	{% block head %}Jornadas{% endblock %}
+	{% block content %}
+	{% if userrol == 'Team Leader' %}
+		<table border="0" cellpadding="12" cellspacing="10" class="table">
+		<thead>
+		<tr>
+			<th>Número días</th>
+			<th>Mes</th>
+		</tr>
+		</thead>
+		<form action="." method="post">
+			{% csrf_token %}
+			<tr>
+				<td>{{ form.numdias }}</td>
+				<td>{{ form.mes }}</td>
+				<td class="ocultar">{{ form.fid }}</td>
+				<!--<td><input type="text" value="{{ inicio }}" name="fini" /></td>
+				<td><input type="text" value="{{ fin}}" name="ffin"/> </td>-->
+			</tr>
+		<input type="submit" class="btn" value="Editar jornadas" id="mostrar" />
+		<!--<a href="#" class="btn">Añadir</a>-->
+		</form>
+		</table>
+	{% else %}
+		<p>No tienes los suficientes privilegios
+		</p>
+{% endif %}
+{% endblock %}

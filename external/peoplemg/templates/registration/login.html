@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+	{% block title %}Inicio{% endblock %}
+	{% block head %}Login{% endblock %}
+	{% block content %}
+		<p>Por favor, inicie sesión</p>
+		{% if form.has_errors %}
+			<p>Por favor, introduce tus datos correctamente</p>
+		{% endif %}
+		<form method="post" action=".">
+			{% csrf_token %}
+				<p><label for="id_username">Usuario:</label>
+					{{ form.username }}</p>
+				<p><label for="id_password">Contraseña:</label>
+					{{ form.password }}</p>
+			<input type="hidden" name="next" value="/jornadas/" />
+			<input type="submit" value="login" />
+		
+	{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+	{% block title %} Vacaciones {{ user.username }}{% endblock %}
+	{% block head %}Vacaciones{% endblock %}
+	{% block content %}
+	{% if userrol == 'Team Leader' %}
+		<table border="0" cellpadding="12" cellspacing="10" class="table">
+		<thead>
+		<tr>
+			<th>Fecha Inicio</th>
+			<th>Fecha Fin</th>
+		</tr>
+		</thead>
+		<form action="." method="post">
+			{% csrf_token %}
+			<tr>
+				<td>{{ form.fini }}</td>
+				<td>{{ form.ffin }}</td>
+				<td class="ocultar">{{ form.fid }}</td>
+				<!--<td><input type="text" value="{{ inicio }}" name="fini" /></td>
+				<td><input type="text" value="{{ fin}}" name="ffin"/> </td>-->
+			</tr>
+		<input type="submit" class="btn" value="Editar vacaciones" id="mostrar" />
+		<!--<a href="#" class="btn">Añadir</a>-->
+		</form>
+		</table>
+	{% else %}
+		<p>No tienes los suficientes privilegios
+		</p>
+{% endif %}
+{% endblock %}

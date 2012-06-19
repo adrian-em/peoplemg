@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>peopleMG | {% block title %}{% endblock %}</title>
+		<link rel="stylesheet" type="text/css" href="/site_media/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/site_media/css/bootstrap-responsive.css" />
+	</head>
+	<body>
+      NAV BAR
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">peopleMG</a>
+            <div class="nav-collapse">
+               <ul class="nav">
+                <li class="">
+                  <a href="/jornadas/">Días trabajados</a>
+                </li>
+                <li class="">
+                  <a href="/guardias/">Guardias</a>
+                </li>
+                <li class="">
+                  <a href="/intervenciones/">Intervenciones</a>
+                </li>
+                <li class="">
+                  <a href="/vacaciones/">Vacaciones</a>
+                </li>
+                {% if user.is_staff %}
+                <li class="">
+                  <a href="/admin/">Administración</a>
+                </li>
+                {% endif %}
+                {% if user.username %}
+                <li class="">
+                  <a href="/logout/">Cerrar sesión ({{user.username}})</a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  <br /><br /><br /><br />
+  
+      <div class="container">
+        <h1>{% block head %}{% endblock %}</h1>
+      {% block content %}{% endblock %}
+  
+      </div>
+      <div class="row footer">
+        <div class="span2 offset12">
+          <span style="text-align:right;" class="label label-success">Versión 0.9 beta</span>
+        </div>
+        <div class="span2 offset3">
+          <span class="label label-success date">{% now "SHORT_DATE_FORMAT" %}</span>
+        </div>
+      </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script src="{{ MEDIA_URL}}js/functions.js"></script>
+    </body>
+</html>

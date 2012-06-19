@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+	{% block title %} Consola Team Leader | {{ usergroup }} |  {{ user.username }}{% endblock %}
+	{% block head %}Consola{% endblock %}
+	{% block content %}
+	{% if userrol == 'Team Leader' %}
+	<br /><br />
+
+
+
+
+	
+
+
+
+
+
+	<!-- ####################################################################################################### -->
+	<h1>Jornadas</h1>
+		<table border="0" cellpadding="12" cellspacing="10" class="table">
+		<thead>
+			<tr>
+				<th>Número días</th>
+				<th>Mes</th>
+				<th>Usuario</th>
+				<th></th>
+				<th>Editar</th>
+				<th></th>
+				<th>Aprobar</th>
+				<th></th>
+				<th>Rechazar</th>
+			</tr>
+		</thead>
+		<tr>
+		{% for value in jornadaslist %}
+		<tr>
+			{% for value2 in value %}
+				<td>{{ value2|safe }}</td>
+			{% endfor %}
+				<!--<td><a href="/jornadas/editar/{{ value.items.id }}"><i class="icon-list-alt"></i></td>
+				<td><a href="/jornadas/aprobar/{{ value2 }}"><i class="icon-ok-circle"></i></td>-->
+			</tr>		
+		{% endfor %}
+		
+		
+	
+		
+</table>
+<!-- ####################################################################################################### -->
+
+
+	<h1>Guardias</h1>
+		<table border="0" cellpadding="12" cellspacing="10" class="table">
+		<thead>
+			<tr>
+				<th>Fecha inicio</th>
+				<th>Fecha fin</th>
+				<th>Usuario</th>
+				<th></th>
+				<th>Editar</th>
+				<th></th>
+				<th>Aprobar</th>
+				<th></th>
+				<th>Rechazar</th>
+			</tr>
+		</thead>
+		<tr>
+		{% for value in guardiaslist %}
+		<tr>
+			{% for value2 in value %}
+				<td>{{ value2|safe }}</td>
+			{% endfor %}
+				<!--<td><a href="/jornadas/editar/{{ value.items.id }}"><i class="icon-list-alt"></i></td>
+				<td><a href="/jornadas/aprobar/{{ value2 }}"><i class="icon-ok-circle"></i></td>-->
+			</tr>		
+		{% endfor %}
+		
+</table>
+
+
+<!-- ####################################################################################################### -->
+
+
+	<h1>Intervenciones</h1>
+		<table border="0" cellpadding="12" cellspacing="10" class="table">
+		<thead>
+		<tr>
+			<th>Fecha inicio</th>
+			<th>Fecha Fin</th>
+			<th>Observaciones</th>
+			<th>Usuario</th>
+			<th></th>
+			<th>Editar</th>
+			<th></th>
+			<th>Aprobar</th>
+			<th></th>
+				<th>Rechazar</th>
+		</tr>
+		</thead>
+
+		<tr>
+		{% for value in intervencioneslist %}
+		<tr>
+			{% for value2 in value %}
+				<td>{{ value2|safe }}</td>
+			{% endfor %}
+				<!--<td><a href="/jornadas/editar/{{ value.items.id }}"><i class="icon-list-alt"></i></td>
+				<td><a href="/jornadas/aprobar/{{ value2 }}"><i class="icon-ok-circle"></i></td>-->
+			</tr>		
+		{% endfor %}
+		
+</table>
+
+
+<!-- ####################################################################################################### -->
+
+
+
+	<h1>Vacaciones</h1>
+		<table border="0" cellpadding="12" cellspacing="10" class="table">
+		<thead>
+			<tr>
+				<th>Fecha inicio</th>
+				<th>Fecha fin</th>
+				<th>Usuario</th>
+				<th></th>
+				<th>Editar</th>
+				<th></th>
+				<th>Aprobar</th>
+				<th></th>
+				<th>Rechazar</th>
+			</tr>
+		</thead>
+		<tr>
+		{% for value in vacacioneslist %}
+		<tr>
+			{% for value2 in value %}
+				<td>{{ value2|safe }}</td>
+			{% endfor %}
+				<!--<td><a href="/jornadas/editar/{{ value.items.id }}"><i class="icon-list-alt"></i></td>
+				<td><a href="/jornadas/aprobar/{{ value2 }}"><i class="icon-ok-circle"></i></td>-->
+			</tr>		
+		{% endfor %}
+		
+</table>
+	{% else %}
+		<p>No tienes permiso para acceder a esta página</p>
+	{% endif %}
+{% endblock %}

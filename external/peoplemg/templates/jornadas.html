@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+	{% block title %} Jornadas {{ user.username }}{% endblock %}
+	{% block head %}Jornadas{% endblock %}
+	{% block content %}
+	{% if user.username %}
+		<table border="0" cellpadding="12" cellspacing="10" class="table">
+			<thead>
+		<tr>
+			<th>Número de días</th>
+			<th>Mes</th>
+			<th>N1</th>
+			<th>N2</th>
+		</tr>
+	</thead>
+		<form action="." method="post">
+			{% csrf_token %}
+			<tr>
+				<td class="ocultar">{{ form.numdias}} </td>
+				<td class="ocultar">{{ form.mes }}</td>
+			</tr>
+		<input type="submit" class="btn" value="Añadir jornada" id="add"/>
+		<a href="#" id="mostrar" class="btn">Añadir</a>
+		</form>
+
+		{% for jornada in jornadas %}
+		<tr>
+			<td>{{ jornada.numdias }}</td>
+			<td>{{ jornada.mes }}</td>
+			<td class="n1">{{ jornada.v_n1}}</td>
+			<td class="n2">{{ jornada.v_n2}}</td>
+		</tr>
+		{% endfor %}
+		</table>
+	{% else %}
+		<p>Esto es una página restringida, debes loguearte para acceder.<br />
+		<a href="/">login</a>
+		</p>
+{% endif %}
+{% endblock %}

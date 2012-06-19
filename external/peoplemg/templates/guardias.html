@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+	{% block title %} Guardias {{ user.username }}{% endblock %}
+	{% block head %}Guardias{% endblock %}
+	{% block content %}
+	{% if user.username %}
+		<table border="0" cellpadding="12" cellspacing="10" class="table">
+		<thead>
+		<tr>
+			<th>Fecha Inicio</th>
+			<th>Fecha Fin</th>
+			<th>N1</th>
+			<th>N2</th>
+		</tr>
+		</thead>
+		<form action="." method="post">
+			{% csrf_token %}
+			<tr>
+				<td class="ocultar">{{ form.fini}}</td>
+				<td class="ocultar">{{ form.ffin}}</td>
+			</tr>
+						<input type="submit" class="btn" value="Añadir guardia" id="add"/>
+						<a href="#" id="mostrar" class="btn">Añadir</a>
+						</form>
+		{% for guardia in guardias %}
+		<tr>
+			<td>{{ guardia.fini }}</td>
+			<td>{{ guardia.ffin }}</td>
+			<td class="n1">{{ guardia.v_n1}}</td>
+			<td class="n2">{{ guardia.v_n2}}</td>
+		</tr>
+		{% endfor %}
+		</table>
+	{% else %}
+		<p>Esto es una página restringida, debes loguearte para acceder.<br />
+		<a href="/">login</a>
+		</p>
+{% endif %}
+{% endblock %}
